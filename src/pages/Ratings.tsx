@@ -20,7 +20,6 @@ import {
   Sparkles
 } from 'lucide-react';
 import { useToast } from '@/hooks/use-toast';
-import { supabase } from '@/integrations/supabase/client';
 
 const Ratings = () => {
   const navigate = useNavigate();
@@ -79,6 +78,26 @@ const Ratings = () => {
         nft_reward: null,
         avatar: '👨‍💻',
         level: 'Эко-новичок'
+      },
+      { 
+        id: 6, 
+        name: 'Ольга Т.', 
+        co2_saved: 58.9, 
+        certificates: 22, 
+        green_tokens: 1178, 
+        nft_reward: null,
+        avatar: '👩‍🎨',
+        level: 'Эко-энтузиаст'
+      },
+      { 
+        id: 7, 
+        name: 'Игорь Р.', 
+        co2_saved: 45.2, 
+        certificates: 18, 
+        green_tokens: 904, 
+        nft_reward: null,
+        avatar: '👨‍🔧',
+        level: 'Эко-стартер'
       }
     ],
     companies: [
@@ -114,6 +133,39 @@ const Ratings = () => {
         type: 'Торговля',
         employees: 120,
         level: 'Серебряный партнер'
+      },
+      { 
+        id: 4, 
+        name: 'CleanEnergy Corp', 
+        co2_saved: 1456.7, 
+        certificates: 234, 
+        green_tokens: 14567, 
+        nft_reward: null,
+        type: 'Энергетика',
+        employees: 89,
+        level: 'Бронзовый партнер'
+      },
+      { 
+        id: 5, 
+        name: 'BioBuild LLC', 
+        co2_saved: 1234.5, 
+        certificates: 189, 
+        green_tokens: 12345, 
+        nft_reward: null,
+        type: 'Строительство',
+        employees: 156,
+        level: 'Сертифицированный партнер'
+      },
+      { 
+        id: 6, 
+        name: 'GreenLogistics', 
+        co2_saved: 987.3, 
+        certificates: 145, 
+        green_tokens: 9873, 
+        nft_reward: null,
+        type: 'Логистика',
+        employees: 78,
+        level: 'Партнер'
       }
     ],
     manufacturers: [
@@ -138,6 +190,39 @@ const Ratings = () => {
         category: 'Косметика',
         products: 89,
         level: 'Сертифицированный производитель'
+      },
+      { 
+        id: 3, 
+        name: 'EcoFood Factory', 
+        co2_saved: 1678.9, 
+        certificates: 298, 
+        green_tokens: 16789, 
+        nft_reward: '🥬 Органик-лидер',
+        category: 'Продукты питания',
+        products: 234,
+        level: 'Золотой производитель'
+      },
+      { 
+        id: 4, 
+        name: 'Bamboo Furniture Ltd', 
+        co2_saved: 1234.6, 
+        certificates: 189, 
+        green_tokens: 12346, 
+        nft_reward: null,
+        category: 'Мебель',
+        products: 67,
+        level: 'Серебряный производитель'
+      },
+      { 
+        id: 5, 
+        name: 'GreenTech Materials', 
+        co2_saved: 987.4, 
+        certificates: 156, 
+        green_tokens: 9874, 
+        nft_reward: null,
+        category: 'Материалы',
+        products: 123,
+        level: 'Бронзовый производитель'
       }
     ]
   };
@@ -237,14 +322,14 @@ const Ratings = () => {
                 <h2 className="text-2xl font-bold text-gray-800 mb-2">
                   Топ-{ratings.length} {category.name.toLowerCase()}
                 </h2>
-                <p className="text-gray-600">Рейтинг обновляется ежегодно</p>
+                <p className="text-gray-600">Рейтинг обновляется ежемесячно</p>
               </div>
 
               {ratings.map((item, index) => (
                 <Card 
                   key={item.id} 
                   className={`border-0 shadow-lg bg-white/80 backdrop-blur-sm hover:shadow-xl transition-all duration-300 ${
-                    index < 3 ? 'ring-2 ring-gradient-to-r from-yellow-400 to-orange-500' : ''
+                    index < 3 ? 'ring-2 ring-yellow-400/50' : ''
                   }`}
                 >
                   <CardContent className="p-6">
@@ -330,7 +415,7 @@ const Ratings = () => {
             <h3 className="text-2xl font-bold mb-4">Участвуйте в рейтинге!</h3>
             <p className="text-green-100 mb-6 max-w-2xl mx-auto">
               Зарабатывайте карбоновые сертификаты, получайте токены GREEN и поднимайтесь в рейтинге. 
-              Топ-3 участника каждый год получают эксклюзивные NFT награды!
+              Топ-3 участника каждый месяц получают эксклюзивные NFT награды!
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Button 
