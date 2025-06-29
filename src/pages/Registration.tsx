@@ -469,7 +469,7 @@ const Registration = () => {
               <ul className="space-y-3 text-green-700">
                 <li className="flex items-center">
                   <div className="w-2 h-2 bg-green-400 rounded-full mr-3"></div>
-                  Получайте персональные советы от ИИ Grok
+                  Получайте персональные советы от ИИ-помощника
                 </li>
                 <li className="flex items-center">
                   <div className="w-2 h-2 bg-green-400 rounded-full mr-3"></div>

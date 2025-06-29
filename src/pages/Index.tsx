@@ -2,21 +2,32 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { 
-  Leaf, 
-  MessageSquare, 
+  MessageCircle, 
   ShoppingBag, 
   Car, 
-  TrendingUp, 
-  Award,
+  BarChart3, 
+  Store, 
+  Settings,
   Sparkles,
-  Globe,
+  Leaf,
   Users,
-  Shield,
+  TrendingUp,
+  Globe,
+  Award,
   Zap,
-  TreePine
+  Shield,
+  ArrowRight,
+  CheckCircle,
+  Bot,
+  Recycle,
+  TreePine,
+  Factory,
+  Database,
+  Smartphone,
+  CreditCard
 } from 'lucide-react';
 
 const Index = () => {
@@ -25,255 +36,321 @@ const Index = () => {
   const services = [
     {
       id: 'chat',
-      title: 'Персональные советы ИИ',
-      description: 'Grok поможет снизить ваш углеродный след',
-      icon: MessageSquare,
-      gradient: 'from-emerald-400 via-green-500 to-teal-600',
-      path: '/chat',
-      bgPattern: 'bg-gradient-to-br from-emerald-50 to-green-100'
+      title: 'ИИ-помощник',
+      description: 'Персональный ИИ-консультант по экологии',
+      icon: Bot,
+      color: 'from-blue-500 to-cyan-500',
+      bgColor: 'bg-blue-50',
+      route: '/chat'
     },
     {
       id: 'control',
-      title: 'Полный контроль жизни',
-      description: 'Умные уведомления и автоматизация',
-      icon: Zap,
-      gradient: 'from-blue-400 via-cyan-500 to-teal-600',
-      path: '/control',
-      bgPattern: 'bg-gradient-to-br from-blue-50 to-cyan-100'
+      title: 'Контроль жизни',
+      description: 'Мониторинг экологического следа',
+      icon: Settings,
+      color: 'from-purple-500 to-pink-500',
+      bgColor: 'bg-purple-50',
+      route: '/control'
     },
     {
       id: 'marketplace',
-      title: 'Маркетплейс сертификатов',
-      description: 'Торгуйте карбоновыми сертификатами',
-      icon: TrendingUp,
-      gradient: 'from-purple-400 via-violet-500 to-indigo-600',
-      path: '/marketplace',
-      bgPattern: 'bg-gradient-to-br from-purple-50 to-violet-100'
+      title: 'Маркетплейс',
+      description: 'Торговля карбоновыми сертификатами',
+      icon: BarChart3,
+      color: 'from-green-500 to-emerald-500',
+      bgColor: 'bg-green-50',
+      route: '/marketplace'
     },
     {
       id: 'shop',
-      title: 'Экотовары',
+      title: 'Экомагазин',
       description: 'Органические и экологичные товары',
       icon: ShoppingBag,
-      gradient: 'from-orange-400 via-amber-500 to-yellow-600',
-      path: '/shop',
-      bgPattern: 'bg-gradient-to-br from-orange-50 to-amber-100'
+      color: 'from-orange-500 to-red-500',
+      bgColor: 'bg-orange-50',
+      route: '/shop'
     },
     {
       id: 'transport',
       title: 'Зелёный транспорт',
       description: 'Экотакси и шеринг самокатов',
       icon: Car,
-      gradient: 'from-lime-400 via-green-500 to-emerald-600',
-      path: '/transport',
-      bgPattern: 'bg-gradient-to-br from-lime-50 to-green-100'
+      color: 'from-teal-500 to-cyan-500',
+      bgColor: 'bg-teal-50',
+      route: '/transport'
     },
     {
       id: 'ratings',
-      title: 'Рейтинги и награды',
-      description: 'NFT награды за экологичность',
+      title: 'Рейтинги',
+      description: 'Топ экологических лидеров',
       icon: Award,
-      gradient: 'from-rose-400 via-pink-500 to-purple-600',
-      path: '/ratings',
-      bgPattern: 'bg-gradient-to-br from-rose-50 to-pink-100'
+      color: 'from-yellow-500 to-amber-500',
+      bgColor: 'bg-yellow-50',
+      route: '/ratings'
+    }
+  ];
+
+  const ecosystemTools = [
+    {
+      name: 'Blockchain Integration',
+      description: 'Polygon network для NFT и токенов',
+      icon: Database,
+      color: 'text-purple-600'
+    },
+    {
+      name: 'Mobile App',
+      description: 'Мобильное приложение для iOS/Android',
+      icon: Smartphone,
+      color: 'text-blue-600'
+    },
+    {
+      name: 'Payment Gateway',
+      description: 'Интеграция с платежными системами',
+      icon: CreditCard,
+      color: 'text-green-600'
+    },
+    {
+      name: 'IoT Sensors',
+      description: 'Датчики для мониторинга выбросов',
+      icon: Zap,
+      color: 'text-orange-600'
+    },
+    {
+      name: 'Smart Contracts',
+      description: 'Автоматизация сделок с сертификатами',
+      icon: Shield,
+      color: 'text-indigo-600'
+    },
+    {
+      name: 'AI Analytics',
+      description: 'Машинное обучение для прогнозов',
+      icon: Bot,
+      color: 'text-pink-600'
+    }
+  ];
+
+  const features = [
+    {
+      title: 'ИИ-консультант',
+      description: 'Персональные рекомендации от искусственного интеллекта',
+      icon: Bot
+    },
+    {
+      title: 'Карбоновые сертификаты',
+      description: 'Зарабатывайте и торгуйте сертификатами CO₂',
+      icon: Leaf
+    },
+    {
+      title: 'GREEN токены',
+      description: 'Внутренняя валюта экосистемы',
+      icon: Sparkles
+    },
+    {
+      title: 'NFT награды',
+      description: 'Уникальные цифровые награды за достижения',
+      icon: Award
     }
   ];
 
   const stats = [
-    {
-      value: '12,547',
-      label: 'Карбоновых сертификатов',
-      icon: Award,
-      gradient: 'from-emerald-500 to-green-600'
-    },
-    {
-      value: '2,847т',
-      label: 'CO₂ сэкономлено',
-      icon: Globe,
-      gradient: 'from-blue-500 to-cyan-600'
-    },
-    {
-      value: '8,956',
-      label: 'Активных пользователей',
-      icon: Users,
-      gradient: 'from-purple-500 to-violet-600'
-    },
-    {
-      value: '156M',
-      label: 'Токенов GREEN',
-      icon: Sparkles,
-      gradient: 'from-amber-500 to-orange-600'
-    }
+    { value: '50,000+', label: 'Активных пользователей', icon: Users },
+    { value: '15,680', label: 'Тонн CO₂ сохранено', icon: TreePine },
+    { value: '2,340', label: 'Сертификатов выдано', icon: Award },
+    { value: '89%', label: 'Удовлетворенность', icon: TrendingUp }
   ];
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-50 via-green-50 to-emerald-50">
-      {/* Modern Header with Glassmorphism */}
-      <header className="relative overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-r from-emerald-600 via-green-600 to-teal-600"></div>
-        <div className="absolute inset-0 bg-black/20"></div>
-        
-        {/* Animated background elements */}
-        <div className="absolute inset-0 overflow-hidden">
-          <div className="absolute -top-4 -left-4 w-24 h-24 bg-white/10 rounded-full blur-xl animate-pulse"></div>
-          <div className="absolute top-1/2 right-8 w-16 h-16 bg-green-300/20 rounded-full blur-lg animate-bounce"></div>
-          <div className="absolute bottom-4 left-1/3 w-12 h-12 bg-emerald-400/20 rounded-full blur-md animate-pulse delay-300"></div>
-        </div>
+    <div className="min-h-screen bg-gradient-to-br from-emerald-50 via-green-50 to-teal-50">
+      {/* Hero Section */}
+      <div className="relative overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-r from-emerald-600/20 to-green-600/20"></div>
+        <div className="relative container mx-auto px-4 py-16 lg:py-24">
+          <div className="text-center max-w-4xl mx-auto">
+            <div className="flex items-center justify-center mb-6">
+              <div className="w-16 h-16 bg-gradient-to-r from-emerald-500 to-green-600 rounded-2xl flex items-center justify-center mr-4">
+                <Leaf className="w-8 h-8 text-white" />
+              </div>
+              <h1 className="text-4xl lg:text-6xl font-bold text-gray-800">
+                Green Wave
+              </h1>
+            </div>
+            
+            <p className="text-xl lg:text-2xl text-gray-600 mb-8 leading-relaxed">
+              Революционная экосистема для устойчивого будущего.<br />
+              ИИ-помощник, карбоновые сертификаты и зелёные технологии в одном месте.
+            </p>
+            
+            <div className="flex flex-col sm:flex-row gap-4 justify-center mb-12">
+              <Button 
+                onClick={() => navigate('/auth')}
+                className="bg-gradient-to-r from-emerald-600 to-green-600 hover:from-emerald-700 hover:to-green-700 text-white px-8 py-4 text-lg shadow-2xl hover:shadow-3xl hover:scale-105 transition-all duration-300"
+                size="lg"
+              >
+                Начать путешествие
+                <ArrowRight className="w-5 h-5 ml-2" />
+              </Button>
+              
+              <Button 
+                variant="outline"
+                onClick={() => navigate('/chat')}
+                className="border-green-300 text-green-700 hover:bg-green-50 px-8 py-4 text-lg shadow-lg hover:shadow-xl transition-all duration-300"
+                size="lg"
+              >
+                Попробовать ИИ
+                <Bot className="w-5 h-5 ml-2" />
+              </Button>
+            </div>
 
-        <div className="relative z-10 container mx-auto px-4 py-16 text-center">
-          <div className="flex items-center justify-center mb-6">
-            <div className="relative">
-              <TreePine className="w-16 h-16 text-white animate-leaf drop-shadow-lg" />
-              <div className="absolute -inset-2 bg-white/20 rounded-full blur-md"></div>
+            {/* Stats */}
+            <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
+              {stats.map((stat, index) => {
+                const IconComponent = stat.icon;
+                return (
+                  <Card key={index} className="border-0 shadow-xl bg-white/80 backdrop-blur-sm hover:shadow-2xl transition-all duration-300">
+                    <CardContent className="p-6 text-center">
+                      <IconComponent className="w-8 h-8 text-green-600 mx-auto mb-3" />
+                      <div className="text-2xl font-bold text-gray-800">{stat.value}</div>
+                      <div className="text-sm text-gray-600">{stat.label}</div>
+                    </CardContent>
+                  </Card>
+                );
+              })}
             </div>
           </div>
-          
-          <h1 className="text-5xl font-bold text-white mb-4 tracking-tight">
-            Green Wave
-          </h1>
-          <p className="text-xl text-green-100 mb-6 max-w-2xl mx-auto leading-relaxed">
-            ИИ-помощник для экологичной жизни на блокчейне Polygon
-          </p>
-          
-          <div className="flex flex-wrap justify-center gap-3 mb-8">
-            <Badge variant="outline" className="border-white/30 text-white bg-white/10 backdrop-blur-sm">
-              🤖 ИИ Grok
-            </Badge>
-            <Badge variant="outline" className="border-white/30 text-white bg-white/10 backdrop-blur-sm">
-              🔗 Polygon Blockchain
-            </Badge>
-            <Badge variant="outline" className="border-white/30 text-white bg-white/10 backdrop-blur-sm">
-              💚 GREEN Токены
-            </Badge>
-            <Badge variant="outline" className="border-white/30 text-white bg-white/10 backdrop-blur-sm">
-              🏆 NFT Награды
-            </Badge>
-          </div>
-
-          <Button 
-            size="lg"
-            className="bg-white text-green-600 hover:bg-green-50 border-0 shadow-2xl hover:shadow-xl hover:scale-105 transition-all duration-300 px-8 py-4 text-lg font-semibold rounded-2xl"
-            onClick={() => navigate('/auth')}
-          >
-            <Sparkles className="w-5 h-5 mr-2" />
-            Начать путешествие
-          </Button>
         </div>
-      </header>
+      </div>
 
-      {/* Modern Stats Section */}
-      <section className="py-16 relative">
-        <div className="container mx-auto px-4">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-16">
-            {stats.map((stat, index) => {
-              const IconComponent = stat.icon;
-              return (
-                <Card key={index} className="group hover:shadow-2xl transition-all duration-500 border-0 bg-white/80 backdrop-blur-sm hover:bg-white/90 hover:-translate-y-2">
-                  <CardContent className="p-6 text-center">
-                    <div className={`w-16 h-16 rounded-2xl bg-gradient-to-r ${stat.gradient} p-4 mx-auto mb-4 shadow-lg group-hover:shadow-xl group-hover:scale-110 transition-all duration-300`}>
-                      <IconComponent className="w-8 h-8 text-white" />
+      {/* Services Grid */}
+      <div className="container mx-auto px-4 py-16">
+        <div className="text-center mb-12">
+          <h2 className="text-3xl lg:text-4xl font-bold text-gray-800 mb-4">
+            Экосистема сервисов
+          </h2>
+          <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+            Шесть интегрированных решений для комплексного подхода к экологии
+          </p>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
+          {services.map((service) => {
+            const IconComponent = service.icon;
+            return (
+              <Card 
+                key={service.id}
+                className="group border-0 shadow-xl bg-white/80 backdrop-blur-sm hover:shadow-2xl hover:scale-105 transition-all duration-300 cursor-pointer overflow-hidden"
+                onClick={() => navigate(service.route)}
+              >
+                <div className={`h-2 bg-gradient-to-r ${service.color}`}></div>
+                <CardHeader className="pb-4">
+                  <div className={`w-16 h-16 ${service.bgColor} rounded-2xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300`}>
+                    <div className={`w-12 h-12 bg-gradient-to-r ${service.color} rounded-xl flex items-center justify-center`}>
+                      <IconComponent className="w-6 h-6 text-white" />
                     </div>
-                    <h3 className="text-2xl font-bold text-gray-800 mb-1">{stat.value}</h3>
-                    <p className="text-gray-600 text-sm">{stat.label}</p>
-                  </CardContent>
-                </Card>
+                  </div>
+                  <CardTitle className="text-xl text-gray-800 group-hover:text-green-700 transition-colors">
+                    {service.title}
+                  </CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <p className="text-gray-600 mb-4">{service.description}</p>
+                  <div className="flex items-center text-green-600 font-semibold">
+                    Открыть сервис
+                    <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
+                  </div>
+                </CardContent>
+              </Card>
+            );
+          })}
+        </div>
+
+        {/* Ecosystem Tools Visualization */}
+        <div className="bg-white/80 backdrop-blur-sm rounded-3xl p-8 shadow-2xl mb-16">
+          <h3 className="text-2xl font-bold text-gray-800 mb-6 text-center">
+            Инструменты экосистемы
+          </h3>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {ecosystemTools.map((tool, index) => {
+              const IconComponent = tool.icon;
+              return (
+                <div key={index} className="flex items-start space-x-4 p-4 rounded-2xl bg-gray-50 hover:bg-white transition-colors">
+                  <div className="w-12 h-12 bg-white rounded-xl flex items-center justify-center shadow-md">
+                    <IconComponent className={`w-6 h-6 ${tool.color}`} />
+                  </div>
+                  <div>
+                    <h4 className="font-semibold text-gray-800 mb-1">{tool.name}</h4>
+                    <p className="text-sm text-gray-600">{tool.description}</p>
+                  </div>
+                </div>
               );
             })}
           </div>
         </div>
-      </section>
+      </div>
 
-      {/* Modern Services Grid */}
-      <section className="py-16">
+      {/* Features Section */}
+      <div className="bg-gradient-to-r from-emerald-600 to-green-600 text-white py-16">
         <div className="container mx-auto px-4">
           <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold text-gray-800 mb-4">
-              Экосистема сервисов
+            <h2 className="text-3xl lg:text-4xl font-bold mb-4">
+              Ключевые возможности
             </h2>
-            <p className="text-gray-600 max-w-2xl mx-auto text-lg">
-              Полный набор инструментов для экологичной жизни и заработка на защите планеты
+            <p className="text-lg text-green-100 max-w-2xl mx-auto">
+              Современные технологии для максимального экологического эффекта
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {services.map((service) => {
-              const IconComponent = service.icon;
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+            {features.map((feature, index) => {
+              const IconComponent = feature.icon;
               return (
-                <Card 
-                  key={service.id}
-                  className="group hover:shadow-2xl transition-all duration-500 cursor-pointer border-0 overflow-hidden bg-white/80 backdrop-blur-sm hover:bg-white/90 hover:-translate-y-3 hover:rotate-1"
-                  onClick={() => navigate(service.path)}
-                >
-                  <div className={`h-32 ${service.bgPattern} relative overflow-hidden`}>
-                    <div className="absolute inset-0 bg-gradient-to-br from-transparent to-black/10"></div>
-                    <div className="absolute top-4 right-4">
-                      <div className={`p-3 rounded-xl bg-gradient-to-r ${service.gradient} shadow-lg group-hover:shadow-xl group-hover:scale-110 transition-all duration-300`}>
-                        <IconComponent className="w-6 h-6 text-white" />
-                      </div>
-                    </div>
-                    <div className="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-white/50 to-transparent"></div>
+                <div key={index} className="text-center group">
+                  <div className="w-20 h-20 bg-white/20 backdrop-blur-sm rounded-2xl flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform duration-300">
+                    <IconComponent className="w-10 h-10 text-white" />
                   </div>
-                  
-                  <CardContent className="p-6">
-                    <CardTitle className="text-xl mb-3 group-hover:text-green-600 transition-colors font-bold">
-                      {service.title}
-                    </CardTitle>
-                    <CardDescription className="text-base text-gray-600 leading-relaxed">
-                      {service.description}
-                    </CardDescription>
-                  </CardContent>
-                </Card>
+                  <h3 className="text-xl font-semibold mb-2">{feature.title}</h3>
+                  <p className="text-green-100">{feature.description}</p>
+                </div>
               );
             })}
           </div>
         </div>
-      </section>
+      </div>
 
-      {/* Modern CTA Section */}
-      <section className="py-20">
-        <div className="container mx-auto px-4">
-          <div className="relative">
-            <div className="absolute inset-0 bg-gradient-to-r from-emerald-600 via-green-600 to-teal-600 rounded-3xl"></div>
-            <div className="absolute inset-0 bg-black/10 rounded-3xl"></div>
-            
-            {/* Animated background elements */}
-            <div className="absolute inset-0 overflow-hidden rounded-3xl">
-              <div className="absolute -top-8 -right-8 w-32 h-32 bg-white/10 rounded-full blur-2xl animate-pulse"></div>
-              <div className="absolute -bottom-4 -left-4 w-24 h-24 bg-green-300/20 rounded-full blur-xl animate-bounce"></div>
+      {/* CTA Section */}
+      <div className="container mx-auto px-4 py-16">
+        <Card className="border-0 shadow-2xl bg-gradient-to-r from-emerald-600 to-green-600 text-white overflow-hidden">
+          <div className="absolute inset-0 bg-black/10"></div>
+          <CardContent className="relative p-12 text-center">
+            <Sparkles className="w-16 h-16 text-white mx-auto mb-6" />
+            <h2 className="text-3xl lg:text-4xl font-bold mb-4">
+              Присоединяйтесь к зелёной революции
+            </h2>
+            <p className="text-xl text-green-100 mb-8 max-w-2xl mx-auto">
+              Станьте частью глобального движения за устойчивое будущее. 
+              Зарабатывайте на экологических действиях и получайте эксклюзивные награды.
+            </p>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <Button 
+                onClick={() => navigate('/auth')}
+                className="bg-white text-green-600 hover:bg-green-50 shadow-lg hover:shadow-xl transition-all duration-300 px-8 py-4 text-lg"
+                size="lg"
+              >
+                <CheckCircle className="w-5 h-5 mr-2" />
+                Создать аккаунт
+              </Button>
+              <Button 
+                variant="outline"
+                onClick={() => navigate('/marketplace')}
+                className="border-white/30 text-white bg-white/10 backdrop-blur-sm hover:bg-white/20 px-8 py-4 text-lg"
+                size="lg"
+              >
+                <Globe className="w-5 h-5 mr-2" />
+                Изучить маркетплейс
+              </Button>
             </div>
-
-            <div className="relative z-10 text-center p-12">
-              <Shield className="w-16 h-16 text-white mx-auto mb-6 animate-pulse" />
-              <h3 className="text-3xl font-bold text-white mb-4">
-                Присоединяйтесь к революции
-              </h3>
-              <p className="text-green-100 mb-8 text-lg max-w-2xl mx-auto leading-relaxed">
-                Зарабатывайте токены GREEN за экологичные действия, торгуйте карбоновыми сертификатами и получайте NFT награды
-              </p>
-              
-              <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <Button 
-                  size="lg"
-                  className="bg-white text-green-600 hover:bg-green-50 border-0 shadow-xl hover:shadow-2xl hover:scale-105 transition-all duration-300 px-8 py-4 text-lg font-semibold rounded-2xl"
-                  onClick={() => navigate('/auth')}
-                >
-                  <Users className="w-5 h-5 mr-2" />
-                  Регистрация
-                </Button>
-                <Button 
-                  size="lg"
-                  variant="outline"
-                  className="border-white/30 text-white bg-white/10 backdrop-blur-sm hover:bg-white/20 hover:scale-105 transition-all duration-300 px-8 py-4 text-lg font-semibold rounded-2xl"
-                  onClick={() => navigate('/marketplace')}
-                >
-                  <TrendingUp className="w-5 h-5 mr-2" />
-                  Маркетплейс
-                </Button>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
+          </CardContent>
+        </Card>
+      </div>
     </div>
   );
 };
